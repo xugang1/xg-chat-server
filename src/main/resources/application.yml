@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: xg-chat-server
+server:
+  port: 9898
