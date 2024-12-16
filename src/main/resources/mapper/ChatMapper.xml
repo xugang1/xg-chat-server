@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chat.xgchatserver.mapper.ChatMapper">
+    <resultMap id="BaseResultMap" type="com.chat.xgchatserver.entity.RoomEntity">
+        <result column="room_id" jdbcType="VARCHAR" property="roomId"></result>
+        <result column="room_name" jdbcType="VARCHAR" property="roomName"></result>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"></result>
+        <result column="unread_count" jdbcType="INTEGER" property="unreadCount"></result>
+    </resultMap>
+    <select id="rooms" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT room_id, room_name, avatar, unread_count FROM chat_rooms
+        <where>
+            <if test="roomName != null and roomName != ''">
+                room_name = #{roomName, jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>

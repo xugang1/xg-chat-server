@@ -1,10 +1,12 @@
 package com.chat.xgchatserver.service;
 
-import org.springframework.stereotype.Service;
+import com.chat.xgchatserver.entity.RoomEntity;
 
-@Service
+import java.util.List;
+
 public interface ChatService {
 
+    List<RoomEntity> rooms(String roomName);
 
 
 }
