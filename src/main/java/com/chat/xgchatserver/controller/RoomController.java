@@ -1,9 +1,10 @@
 package com.chat.xgchatserver.controller;
 
 
+import com.chat.xgchatserver.entity.MessageEntity;
 import com.chat.xgchatserver.entity.RoomEntity;
 import com.chat.xgchatserver.result.Result;
-import com.chat.xgchatserver.service.impl.ChatServiceImpl;
+import com.chat.xgchatserver.service.impl.RoomServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping("/api/chat")
+@RequestMapping("/api")
 @RestController
-public class ChatController {
+public class RoomController {
 
     @Autowired
-    private ChatServiceImpl chatService;
+    private RoomServiceImpl roomService;
 
     @GetMapping("/rooms")
     public Result<List<RoomEntity>> rooms(@RequestParam(name = "roomName", required = false) String roomName) {
-        List<RoomEntity> rooms = chatService.rooms(roomName);
+        List<RoomEntity> rooms = roomService.rooms(roomName);
         return Result.success(rooms);
     }
 }

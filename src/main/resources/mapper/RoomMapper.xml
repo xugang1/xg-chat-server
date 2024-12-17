@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chat.xgchatserver.mapper.ChatMapper">
+<mapper namespace="com.chat.xgchatserver.mapper.RoomMapper">
     <resultMap id="BaseResultMap" type="com.chat.xgchatserver.entity.RoomEntity">
         <result column="room_id" jdbcType="VARCHAR" property="roomId"></result>
         <result column="room_name" jdbcType="VARCHAR" property="roomName"></result>

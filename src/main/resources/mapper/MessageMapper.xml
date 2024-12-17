@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chat.xgchatserver.mapper.MessageMapper">
+    <resultMap id="BaseResultMap" type="com.chat.xgchatserver.entity.MessageEntity">
+        <result column="room_id" jdbcType="VARCHAR" property="roomId"></result>
+        <result column="_id" jdbcType="VARCHAR" property="_id"></result>
+        <result column="content" jdbcType="VARCHAR" property="content"></result>
+        <result column="sender_id" jdbcType="VARCHAR" property="senderId"></result>
+        <result column="username" jdbcType="VARCHAR" property="username"></result>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"></result>
+        <result column="date" jdbcType="DATE" property="date"></result>
+        <result column="time_stamp" jdbcType="VARCHAR" property="timeStamp"></result>
+        <result column="deleted" jdbcType="VARCHAR" property="deleted"></result>
+        <result column="failure" jdbcType="VARCHAR" property="failure"></result>
+    </resultMap>
+    <select id="messages" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT room_id, _id, content, sender_id, username, avatar, date, time_stamp, deleted, failure FROM chat_room_messages
+        <where>
+            <if test="roomId != null and roomId != ''">
+                room_id = #{roomId, jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>

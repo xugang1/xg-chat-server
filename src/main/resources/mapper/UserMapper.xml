@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chat.xgchatserver.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.chat.xgchatserver.entity.UserEntity">
+        <result column="_id" jdbcType="VARCHAR" property="_id"></result>
+        <result column="username" jdbcType="VARCHAR" property="username"></result>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"></result>
+    </resultMap>
+    <select id="roomUsers" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT cu._id, cu.username, cu.avatar FROM chat_users cu
+        LEFT JOIN chat_room_users cru on cu._id = cru._id
+        <where>
+            <if test="roomId != null and roomName != ''">
+                room_id = #{roomId, jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>
